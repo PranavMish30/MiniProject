@@ -1,0 +1,5 @@
+.vscode/
+Data/
+Dataset/
+*.csv
+requirements.txt
