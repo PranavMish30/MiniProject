@@ -37,16 +37,16 @@ predictions = predictions.flatten()
 # y_test = y.flatten()
 
 # Select a subset (e.g., first 100 samples) for visualization if the dataset is large
-num_samples = 100
-predictions_subset = predictions[:num_samples]
-ground_truth_subset = y_test[:num_samples]
+# num_samples = 100
+# predictions_subset = predictions[:num_samples]
+# ground_truth_subset = y_test[:num_samples]
 plt.figure(figsize=(12, 6))
 
 # Plot predictions
-plt.plot(predictions_subset, label='Predictions', marker='o', linestyle='-', color='blue')
+plt.plot(predictions, label='Predictions', marker='o', linestyle='-', color='blue')
 
 # Plot ground truth
-plt.plot(ground_truth_subset, label='Ground Truth', marker='x', linestyle='--', color='red')
+plt.plot(y_test, label='Ground Truth', marker='*', linestyle='--', color='red')
 
 # Add labels, legend, and title
 plt.title('Predictions vs. Ground Truth')
@@ -74,4 +74,21 @@ plt.title('Confusion Matrix Heatmap')
 plt.xlabel('Predicted Class')
 plt.ylabel('True Class')
 plt.savefig('confusion_matrix_heatmap.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+
+plt.figure(figsize=(10, 6))
+plt.scatter(range(len(y_test)), y_test, color='red', label='Ground Truth', alpha=0.6)
+plt.scatter(range(len(predictions)), predictions, color='blue', label='Predictions', alpha=0.6)
+
+# Add labels, legend, and title
+plt.title('Predictions vs Ground Truth (Point Graph)', fontsize=14)
+plt.xlabel('Sample Index', fontsize=12)
+plt.ylabel('Values', fontsize=12)
+plt.legend()
+plt.grid(True)
+
+plt.savefig('predictions_vs_ground_truth_scatter.png', dpi=300, bbox_inches='tight')
+
+# Show the plot
 plt.show()
